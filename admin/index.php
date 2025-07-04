@@ -29,8 +29,21 @@ session_start();
         <div class="col-md-3">
           <div class="card text-white bg-primary">
             <div class="card-body">
+              <?php
+                $doctors = mysqli_query($connect, "SELECT * FROM doctor WHERE status='approved'");
+                $doctorCount = mysqli_num_rows($doctors);
+                 $patients = mysqli_query($connect, "SELECT * FROM patient ");
+                $patientCount = mysqli_num_rows($patients);
+                $reports = mysqli_query($connect, "SELECT * FROM report");
+                $reportCount = mysqli_num_rows($reports);
+
+                $in = mysqli_query($connect, "SELECT sum(amount_paid) as profit FROM income");
+                $row = mysqli_fetch_assoc($in);
+                $inc = $row['profit'];
+
+              ?>
               <h5 class="card-title">Doctors</h5>
-              <p class="card-text fs-4">15</p>
+              <p class="card-text fs-4"><?php echo $doctorCount ?></p>
             </div>
           </div>
         </div>
@@ -38,15 +51,15 @@ session_start();
           <div class="card text-white bg-success">
             <div class="card-body">
               <h5 class="card-title">Patients</h5>
-              <p class="card-text fs-4">120</p>
+              <p class="card-text fs-4"><?php echo $patientCount?></p>
             </div>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card text-white bg-warning">
             <div class="card-body">
-              <h5 class="card-title">Appointments</h5>
-              <p class="card-text fs-4">38</p>
+              <h5 class="card-title">Total Income</h5>
+              <p class="card-text fs-4"><?php echo "₹$inc" ?></p>
             </div>
           </div>
         </div>
@@ -54,51 +67,11 @@ session_start();
           <div class="card text-white bg-danger">
             <div class="card-body">
               <h5 class="card-title">Reports</h5>
-              <p class="card-text fs-4">22</p>
+              <p class="card-text fs-4"><?php echo $reportCount ?></p>
             </div>
           </div>
         </div>
-      </div>
-      
-
-      <!-- Recent Activity Table -->
-      <div class="card">
-        <div class="card-header">
-          Recent Appointments
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Patient</th>
-                <th>Doctor</th>
-                <th>Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Doe</td>
-                <td>Dr. Smith</td>
-                <td>2025-06-04</td>
-                <td><span class="badge bg-success">Confirmed</span></td>
-              </tr>
-              <tr>
-                <td>Jane Roe</td>
-                <td>Dr. Khan</td>
-                <td>2025-06-05</td>
-                <td><span class="badge bg-warning">Pending</span></td>
-              </tr>
-              <tr>
-                <td>Bob Ray</td>
-                <td>Dr. Lee</td>
-                <td>2025-06-06</td>
-                <td><span class="badge bg-danger">Cancelled</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      </div>      
 
     </div>
   </div>

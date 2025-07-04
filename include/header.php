@@ -13,7 +13,7 @@
   <body>
      <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-2">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="">
           <img src="include/img/icon.png" alt="" width="80" />
         </a>
         
@@ -36,16 +36,43 @@
                     $user = $_SESSION['admin'];
                     echo '
                     <li class="nav-item">
-                        <a class="nav-link active" href="admin/index.php">'.$user.'</a>
+                        <a class="nav-link active" href="profile.php">'.$user.'</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="../admin/logout.php">Logout</a>   
                     </li>
                     ';
-                }else {
+                }else if (isset($_SESSION['doctor'])){
+                    $user = $_SESSION['doctor'];
                     echo '
                     <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" href="profile.php">'.$user.'</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../doctor/logout.php">Logout</a>   
+                    </li>
+                    ';
+                } else if (isset($_SESSION['patient'])){
+                    $user = $_SESSION['patient'];
+                    echo '
+                    <li class="nav-item">
+                        <a class="nav-link active" href=profile.php">'.$user.'</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../patient/logout.php">Logout</a>   
+                    </li>
+                    ';
+                }
+                else {
+                    echo '
+                    <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="career.php">Career</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="about.php">About</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -59,9 +86,9 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="adminlogin.php">Admin</a></li>
-                <li><a class="dropdown-item" href="#">Doctor</a></li>
+                <li><a class="dropdown-item" href="doctorlogin.php">Doctor</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Patient</a>
+                  <a class="dropdown-item" href="patientlogin.php">Patient</a>
                 </li>
               </ul>
             </li>

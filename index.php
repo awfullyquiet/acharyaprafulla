@@ -29,7 +29,7 @@ include("include/header.php");
               Get expert care from our experienced specialists, anytime you need
               it.
             </p>
-            <a href="#" class="btn btn-primary btn-lg mt-3">Book Appointment</a>
+            <a href="patientlogin.php" class="btn btn-primary btn-lg mt-3">Book Appointment</a>
           </div>
         </div>
       </div>
@@ -74,24 +74,7 @@ include("include/header.php");
       </div>
     </section>
 
-    <!-- Find a Doctor -->
-    <section class="bg-light py-5">
-      <div class="container">
-        <h2 class="mb-4 text-center">Find a Doctor</h2>
-        <form class="row g-3 justify-content-center">
-          <div class="col-md-4">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Doctor Name or Specialty"
-            />
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-primary w-100">Search</button>
-          </div>
-        </form>
-      </div>
-    </section>
+   
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
